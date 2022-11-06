@@ -1,19 +1,19 @@
 
---task1
+--task1 двойной факториал
 dFact :: Integer -> Integer
 dFact n  
    | n < 2  = 1
    | otherwise = n * dFact(n-2)
  
 
---task2
+--task2 сумма цифр в числе
 sumOfDigit :: Integer -> Int
 sumOfDigit n 
    | n == 0  = 0
    | otherwise = fromIntegral (n `rem` 10) + sumOfDigit (n `quot` 10)
    
 
---task3  
+--task3  возвращает степень 2
 powOf2 :: Integer -> Int
 powOf2 n = degree n 0  
 
@@ -23,7 +23,7 @@ degree x y
     | x < 1 || odd x = -1
     | otherwise = degree (x `div` 2) (y + 1)
  
---task4
+--task4 количество точек, в которых окружности пересекаются
 qntPoints :: Int -> Int -> Int -> Int -> Int -> Int -> Int
 qntPoints x1 y1 r1 x2 y2 r2 
    | d > r  || r' > d = 0
@@ -33,7 +33,7 @@ qntPoints x1 y1 r1 x2 y2 r2
          r = (r1 + r2)^2
          r' = (r1 - r2)^2 
 
---task 5  
+--task 5  функция sin
 fmod :: Double -> Double -> Double
 fmod x y =
     if abs x < y then
@@ -56,20 +56,20 @@ iter x eps n temp result =
     else
         result 
 
---task 6
+--task 6 безаргументные функции
+
+-- x^y
 func1 :: Integer -> Integer -> Integer
 func1 = (^)
 
-func1' x y = (^y) x
-
+-- (x+1)^y
 func2 = (^) . (+1)
 
-func3 :: Integer -> Integer -> Integer
-func3 = flip (flip (^) . flip (-)3)
-
+-- x^(y-3)
 func3 :: Double -> Double -> Double
 func3  = flip (flip (**) . flip (-)3)
 
+--(x+1)^(y-3)
 func4 :: Integer -> Integer -> Integer
 func4 = flip (func2 . flip (-) 3)
 
