@@ -33,10 +33,6 @@ qntPoints x1 y1 r1 x2 y2 r2
          r = (r1 + r2)^2
          r' = (r1 - r2)^2 
 
-
-  
-
-   
 --task 5  
 fmod :: Double -> Double -> Double
 fmod x y =
@@ -46,8 +42,8 @@ fmod x y =
         x - y * fromIntegral (truncate z) where z = x / y
         
 
-mySin2 :: Double -> Double -> Double
-mySin2 x eps = 
+mySin :: Double -> Double -> Double
+mySin x eps = 
      iter l eps 3 l l 
     where l = fmod x pi
     
@@ -63,6 +59,7 @@ iter x eps n temp result =
 --task 6
 func1 :: Integer -> Integer -> Integer
 func1 = (^)
+
 func1' x y = (^y) x
 
 func2 = (^) . (+1)
@@ -70,9 +67,9 @@ func2 = (^) . (+1)
 func3 :: Integer -> Integer -> Integer
 func3 = flip (flip (^) . flip (-)3)
 
-func3' :: Double -> Double -> Double
-func3' = flip (flip (**) . flip (-)3)
+func3 :: Double -> Double -> Double
+func3  = flip (flip (**) . flip (-)3)
 
-func4' :: Integer -> Integer -> Integer
-func4' = flip (func2 . flip (-) 3)
+func4 :: Integer -> Integer -> Integer
+func4 = flip (func2 . flip (-) 3)
 
