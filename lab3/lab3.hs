@@ -22,15 +22,13 @@ toSquares n = [n*n | n <- [0 .. n]]
 sumSquares1 :: Num a => [a] -> a
 sumSquares1 lst = if null lst  then 0 else head lst ^ 2 + sumSquares1 (tail lst)  
 
-sumSquares1' lst = 
- sum [h^2 | h <- lst]
+-- генерация списков
+sumSquares lst = sum [h^2 | h <- lst]
  
 --б) хвостовая рекурсия 
 sumSquares2 :: Num a => [a] -> a
 sumSquares2 lst = sumSqIt lst 0
 
--- lst == [] === null lst
--- f [] = ...
 sumSqIt :: Num t => [t] -> t -> t
 sumSqIt lst res = if null lst then res
                   else sumSqIt t (res + h^2) where h = head lst
@@ -44,9 +42,10 @@ sumSquares3 = foldr (\x -> (+) (x ^ 2)) 0
 posMax :: [String] -> String
 posMax strs =  [maximum y | y <- transpose strs]
 
--- task4
+-- task4 минимальный полярный угол
 distance (x, y) = sqrt (x*x + y*y)
 
+--компакатор
 comp x y 
   | angle1 > angle2 || distance p1 < distance p2 = GT
   | angle1 < angle2 || distance p1 > distance p2 = LT 
@@ -67,7 +66,7 @@ minAngle points = snd (minimumBy comp [(atan2wrapper (snd p) (fst p), p) | p <- 
 --task5 медиана набора чисел
 upperHalf :: (Fractional a, Ord a) => [a] -> [a]
 upperHalf lst
-  | even (length lst) = filter (> x) lst  --список четной длины, то работаем с левой частью
+  | even (length lst) = filter (> x) lst  
   | otherwise = filter (> b) lst
   where
     x = a + (b - a) / 2 
